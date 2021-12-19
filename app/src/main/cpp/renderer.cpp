@@ -25,8 +25,6 @@
 #define START_ATTRIB 2
 #define END_ATTRIB 3
 
-#define MULTILINE(...) #__VA_ARGS__
-
 static const char* VERTEX_SHADER =
     "#version 300 es\n"
     "layout(location = " STRV(OFFSET_ATTRIB) ") uniform int o;\n"
@@ -53,7 +51,8 @@ static const char* VERTEX_SHADER =
 "        float time_total = end - start;"
 "        float progress = time_since/time_total;"
 "        float taper = 0.05;"
-"        float thickness = (0.05"
+"        float thickness = (0.06"
+"           * mix(0.5, 1.0, progress)"
 "           * capsule(time_since*taper, 1.2, true)"
 "           * capsule(time_since*taper, time_total*taper - 1.2, false)"
 "        );"
