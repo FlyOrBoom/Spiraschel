@@ -80,9 +80,9 @@ struct Vertex {
     GLubyte rgba[4];
 };
 struct Point {
-    GLint time;
-    GLint index;
-    GLint start;
+    GLshort index;
+    GLshort start;
+    GLshort end;
 };
 extern const Vertex QUAD[4];
 
@@ -99,27 +99,15 @@ public:
     virtual ~Renderer();
     void resize(int w, int h);
     void render();
+    int mOffset;
 
 protected:
     Renderer();
 
-    // return a pointer to a buffer of MAX_INSTANCES * sizeof(vec2).
-    // the buffer is filled with per-instance offsets, then unmapped.
-    virtual float* mapOffsetBuf() = 0;
-    virtual void unmapOffsetBuf() = 0;
-    // return a pointer to a buffer of MAX_INSTANCES * sizeof(vec4).
-    // the buffer is filled with per-instance scale and rotation transforms.
-    virtual float* mapTransformBuf() = 0;
-    virtual void unmapTransformBuf() = 0;
-
-    virtual void draw(unsigned int numInstances) = 0;
+    virtual void draw() = 0;
 
 private:
-    void calcSceneParams(unsigned int w, unsigned int h);
     void step();
-
-    float mScale[2];
-    float mAngle;
 };
 
 extern Renderer* createES2Renderer();

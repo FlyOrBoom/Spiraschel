@@ -19,16 +19,7 @@
 #include <string.h>
 #include <time.h>
 
-#include "gles3jni.h"
-
-const Vertex QUAD[4] = {
-    // Square with diagonal < 2 so that it fits in a [-1 .. 1]^2 square
-    // regardless of rotation.
-    {{-0.7f, -0.7f}, {0x00, 0xFF, 0x00}},
-    {{ 0.7f, -0.7f}, {0x00, 0x00, 0xFF}},
-    {{-0.7f,  0.7f}, {0xFF, 0x00, 0x00}},
-    {{ 0.7f,  0.7f}, {0xFF, 0xFF, 0xFF}},
-};
+#include "runner.h"
 
 bool checkGlError(const char* funcName) {
     GLint err = glGetError();
@@ -123,9 +114,7 @@ static void printGlString(const char* name, GLenum s) {
 
 // ----------------------------------------------------------------------------
 
-Renderer::Renderer() : mAngle(0) {
-    memset(mScale, 0, sizeof(mScale));
-}
+Renderer::Renderer() : mOffset(0) {}
 
 Renderer::~Renderer() {
 }
@@ -138,9 +127,7 @@ void Renderer::step() {
     timespec now;
     long day_sec = 1639898789;
     clock_gettime(CLOCK_MONOTONIC, &now);
-
-    mAngle = float(now.tv_sec) / float(SECONDS_PER_HOUR) * TWO_PI;
-
+    mOffset = now.tv_sec - 40000;
 }
 
 void Renderer::render() {
@@ -148,7 +135,7 @@ void Renderer::render() {
 
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    draw(1);
+    draw();
     checkGlError("Renderer::render");
 }
 
@@ -183,8 +170,6 @@ Java_com_android_gles3jni_GLES3JNILib_init(JNIEnv* env, jobject obj) {
     const char* versionStr = (const char*)glGetString(GL_VERSION);
     if (strstr(versionStr, "OpenGL ES 3.") && gl3stubInit()) {
         g_renderer = createES3Renderer();
-    } else if (strstr(versionStr, "OpenGL ES 2.")) {
-        g_renderer = createES2Renderer();
     } else {
         ALOGE("Unsupported OpenGL ES version");
     }

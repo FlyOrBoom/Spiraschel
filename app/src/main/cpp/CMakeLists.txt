@@ -27,7 +27,7 @@ if (${ANDROID_PLATFORM_LEVEL} LESS 12)
   return()
 elseif (${ANDROID_PLATFORM_LEVEL} LESS 18)
   add_definitions("-DDYNAMIC_ES3")
-  set(GL3STUB_SRC gl3stub.c)
+  set(GL3STUB_SRC stub.c)
   set(OPENGL_LIB GLESv2)
 else ()
   set(OPENGL_LIB GLESv3)
@@ -35,9 +35,8 @@ endif (${ANDROID_PLATFORM_LEVEL} LESS 12)
 
 add_library(gles3jni SHARED
             ${GL3STUB_SRC}
-            gles3jni.cpp 
-            RendererES2.cpp
-            RendererES3.cpp)
+        runner.cpp
+        renderer.cpp)
 
 # Include libraries needed for gles3jni lib
 target_link_libraries(gles3jni

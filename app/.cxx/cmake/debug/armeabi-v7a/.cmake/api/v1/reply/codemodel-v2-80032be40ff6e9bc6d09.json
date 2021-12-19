@@ -38,7 +38,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "gles3jni::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-gles3jni-Debug-9d9359a7d92d06cae210.json",
+					"jsonFile" : "target-gles3jni-Debug-08f223bbd1ef62b5bad7.json",
 					"name" : "gles3jni",
 					"projectIndex" : 0
 				}
@@ -48,7 +48,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/xing/docs/spirosch/app/.cxx/cmake/debug/arm64-v8a",
+		"build" : "/home/xing/docs/spirosch/app/.cxx/cmake/debug/armeabi-v7a",
 		"source" : "/home/xing/docs/spirosch/app/src/main/cpp"
 	},
 	"version" : 

@@ -6,11 +6,6 @@
 },
 {
   "directory": "/home/xing/docs/spirosch/app/.cxx/cmake/debug/arm64-v8a",
-  "command": "/home/xing/Android/Sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android21 --gcc-toolchain=/home/xing/Android/Sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/xing/Android/Sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dgles3jni_EXPORTS -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -std=c++11 -fno-rtti -fno-exceptions -Wall -O0 -fno-limit-debug-info  -fPIC -o CMakeFiles/gles3jni.dir/RendererES2.cpp.o -c /home/xing/docs/spirosch/app/src/main/cpp/RendererES2.cpp",
-  "file": "/home/xing/docs/spirosch/app/src/main/cpp/RendererES2.cpp"
-},
-{
-  "directory": "/home/xing/docs/spirosch/app/.cxx/cmake/debug/arm64-v8a",
   "command": "/home/xing/Android/Sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android21 --gcc-toolchain=/home/xing/Android/Sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/xing/Android/Sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dgles3jni_EXPORTS -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -std=c++11 -fno-rtti -fno-exceptions -Wall -O0 -fno-limit-debug-info  -fPIC -o CMakeFiles/gles3jni.dir/RendererES3.cpp.o -c /home/xing/docs/spirosch/app/src/main/cpp/RendererES3.cpp",
   "file": "/home/xing/docs/spirosch/app/src/main/cpp/RendererES3.cpp"
 }
