@@ -42,7 +42,7 @@ rule CXX_SHARED_LIBRARY_LINKER__gles3jni_Debug
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /home/xing/Android/Sdk/cmake/3.18.1/bin/cmake --regenerate-during-build -S/home/xing/docs/ndk-samples/gles3jni/app/src/main/cpp -B/home/xing/docs/ndk-samples/gles3jni/app/.cxx/cmake/debug/x86
+  command = /home/xing/Android/Sdk/cmake/3.18.1/bin/cmake --regenerate-during-build -S/home/xing/docs/spirosch/app/src/main/cpp -B/home/xing/docs/spirosch/app/.cxx/cmake/debug/x86
   description = Re-running CMake...
   generator = 1
 

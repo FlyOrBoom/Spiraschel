@@ -50,6 +50,7 @@
 
 #define MAX_INSTANCES_PER_SIDE 16
 #define MAX_INSTANCES   (MAX_INSTANCES_PER_SIDE * MAX_INSTANCES_PER_SIDE)
+#define HALF_PI         (0.5 * M_PI)
 #define TWO_PI          (2.0 * M_PI)
 #define MAX_ROT_SPEED   (0.3 * TWO_PI)
 
@@ -66,17 +67,22 @@
 // so vertices go directly from model to clip space.
 
 #define HOURS_PER_DAY (24)
-#define MINUTES_PER_DAY (24*60)
-#define SECONDS_PER_DAY (24*60*60)
-
 #define MINUTES_PER_HOUR (60)
-#define SECONDS_PER_HOUR (60*60)
-
 #define SECONDS_PER_MINUTE (60)
+
+#define MINUTES_PER_DAY (MINUTES_PER_HOUR*HOURS_PER_DAY)
+#define SECONDS_PER_HOUR (SECONDS_PER_MINUTE*MINUTES_PER_HOUR)
+
+#define SECONDS_PER_DAY (SECONDS_PER_HOUR*HOURS_PER_DAY)
 
 struct Vertex {
     GLfloat pos[2];
     GLubyte rgba[4];
+};
+struct Point {
+    GLfloat radius;
+    GLfloat angle;
+    GLfloat index;
 };
 extern const Vertex QUAD[4];
 
@@ -109,14 +115,11 @@ protected:
     virtual void draw(unsigned int numInstances) = 0;
 
 private:
-    void calcSceneParams(unsigned int w, unsigned int h, float* offsets);
+    void calcSceneParams(unsigned int w, unsigned int h);
     void step();
 
-    unsigned int mNumInstances;
     float mScale[2];
-    float mAngularVelocity[MAX_INSTANCES];
-    uint64_t mLastFrameNs;
-    float mAngles[MAX_INSTANCES];
+    float mAngle;
 };
 
 extern Renderer* createES2Renderer();

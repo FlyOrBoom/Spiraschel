@@ -163,7 +163,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/xing/docs/ndk-samples/gles3jni/app/.cxx/cmake/debug/x86"
+			"value" : "/home/xing/docs/spirosch/app/.cxx/cmake/debug/x86"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -236,6 +236,22 @@
 			],
 			"type" : "INTERNAL",
 			"value" : "/home/xing/Android/Sdk/cmake/3.18.1/bin/ctest"
+		},
+		{
+			"name" : "CMAKE_CXX_COMPILER",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "(This variable does not exist and should not be used)"
+				}
+			],
+			"type" : "UNINITIALIZED",
+			"value" : ""
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_AR",
@@ -364,6 +380,22 @@
 			],
 			"type" : "STRING",
 			"value" : "-latomic -lm"
+		},
+		{
+			"name" : "CMAKE_C_COMPILER",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "(This variable does not exist and should not be used)"
+				}
+			],
+			"type" : "UNINITIALIZED",
+			"value" : ""
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_AR",
@@ -623,7 +655,7 @@
 				}
 			],
 			"type" : "UNINITIALIZED",
-			"value" : "/home/xing/docs/ndk-samples/gles3jni/app/.cxx/cmake/debug/prefab/x86/prefab"
+			"value" : "/home/xing/docs/spirosch/app/.cxx/cmake/debug/prefab/x86/prefab"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -683,7 +715,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/xing/docs/ndk-samples/gles3jni/app/src/main/cpp"
+			"value" : "/home/xing/docs/spirosch/app/src/main/cpp"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -719,7 +751,7 @@
 				}
 			],
 			"type" : "UNINITIALIZED",
-			"value" : "/home/xing/docs/ndk-samples/gles3jni/app/build/intermediates/cmake/debug/obj/x86"
+			"value" : "/home/xing/docs/spirosch/app/build/intermediates/cmake/debug/obj/x86"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -991,7 +1023,7 @@
 				}
 			],
 			"type" : "UNINITIALIZED",
-			"value" : "/home/xing/docs/ndk-samples/gles3jni/app/build/intermediates/cmake/debug/obj/x86"
+			"value" : "/home/xing/docs/spirosch/app/build/intermediates/cmake/debug/obj/x86"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1231,10 +1263,10 @@
 			[
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "The CMake toolchain file"
 				}
 			],
-			"type" : "UNINITIALIZED",
+			"type" : "FILEPATH",
 			"value" : "/home/xing/Android/Sdk/ndk/22.1.7171670/build/cmake/android.toolchain.cmake"
 		},
 		{
@@ -1275,7 +1307,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/xing/docs/ndk-samples/gles3jni/app/.cxx/cmake/debug/x86"
+			"value" : "/home/xing/docs/spirosch/app/.cxx/cmake/debug/x86"
 		},
 		{
 			"name" : "Project_SOURCE_DIR",
@@ -1287,7 +1319,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/xing/docs/ndk-samples/gles3jni/app/src/main/cpp"
+			"value" : "/home/xing/docs/spirosch/app/src/main/cpp"
 		},
 		{
 			"name" : "gles3jni_LIB_DEPENDS",

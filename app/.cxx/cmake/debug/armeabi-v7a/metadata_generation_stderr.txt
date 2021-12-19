@@ -26,8 +26,8 @@ CMake Warning at /home/xing/Android/Sdk/ndk/22.1.7171670/build/cmake/android.too
   values may be wrong or missing.  Update to CMake 3.19 or newer to use
   CMake's built-in compiler identification.
 Call Stack (most recent call first):
-  /home/xing/docs/ndk-samples/gles3jni/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/3.18.1-g262b901/CMakeSystem.cmake:6 (include)
-  /home/xing/docs/ndk-samples/gles3jni/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/CMakeTmp/CMakeLists.txt:2 (project)
+  /home/xing/docs/spirosch/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/3.18.1-g262b901/CMakeSystem.cmake:6 (include)
+  /home/xing/docs/spirosch/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/CMakeTmp/CMakeLists.txt:2 (project)
 
 
 CMake Warning at /home/xing/Android/Sdk/ndk/22.1.7171670/build/cmake/android.toolchain.cmake:449 (message):
@@ -36,7 +36,7 @@ CMake Warning at /home/xing/Android/Sdk/ndk/22.1.7171670/build/cmake/android.too
   values may be wrong or missing.  Update to CMake 3.19 or newer to use
   CMake's built-in compiler identification.
 Call Stack (most recent call first):
-  /home/xing/docs/ndk-samples/gles3jni/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/3.18.1-g262b901/CMakeSystem.cmake:6 (include)
-  /home/xing/docs/ndk-samples/gles3jni/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/CMakeTmp/CMakeLists.txt:2 (project)
+  /home/xing/docs/spirosch/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/3.18.1-g262b901/CMakeSystem.cmake:6 (include)
+  /home/xing/docs/spirosch/app/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/CMakeTmp/CMakeLists.txt:2 (project)
 
 

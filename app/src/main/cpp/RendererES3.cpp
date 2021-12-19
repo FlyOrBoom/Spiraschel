@@ -20,22 +20,28 @@
 #define STR(s) #s
 #define STRV(s) STR(s)
 
-#define POS_ATTRIB 0
-#define COLOR_ATTRIB 1
-#define SCALEROT_ATTRIB 2
+#define RADIUS_ATTRIB 0
+#define ANGLE_ATTRIB 1
+#define INDEX_ATTRIB 2
 #define OFFSET_ATTRIB 3
 
-static const char VERTEX_SHADER[] =
+#define MULTILINE(...) #__VA_ARGS__
+
+static const char* VERTEX_SHADER =
     "#version 300 es\n"
-    "layout(location = " STRV(POS_ATTRIB) ") in vec2 pos;\n"
-    "layout(location=" STRV(COLOR_ATTRIB) ") in vec4 color;\n"
-    "layout(location=" STRV(SCALEROT_ATTRIB) ") in vec4 scaleRot;\n"
-    "layout(location=" STRV(OFFSET_ATTRIB) ") in vec2 offset;\n"
+    "layout(location = " STRV(RADIUS_ATTRIB) ") in float radius;\n"
+    "layout(location = " STRV(ANGLE_ATTRIB) ") in float angle;\n"
+    "layout(location = " STRV(INDEX_ATTRIB) ") in float index;\n"
     "out vec4 vColor;\n"
     "void main() {\n"
-    "    mat2 sr = mat2(scaleRot.xy, scaleRot.zw);\n"
-    "    gl_Position = vec4(sr*pos + offset, 0.0, 1.0);\n"
-    "    vColor = color;\n"
+    "    gl_Position = vec4(\n"
+    "        radius * cos(angle),\n"
+    "        radius * sin(angle),\n"
+    "        0.0, 1.0\n"
+    "    );\n"
+    "    vec3 blank = vec3(0.8);\n"
+    "    vec3 color = vec3( sin(.1*angle + .4*index), sin(.2*angle + .3*index), sin(.3*angle + .2*index));\n"
+    "    vColor = vec4( mix(blank, color, mod(index, 2.0)), 1.);\n"
     "}\n";
 
 static const char FRAGMENT_SHADER[] =
@@ -91,16 +97,16 @@ bool RendererES3::init() {
     if (!mProgram)
         return false;
 
-    int minutes[]{510,567,574,631,638,695,702,761,809,866,873,930,MINUTES_PER_DAY};
+    int minutes[]{510,567,574,631,638,695,702,761,809,866,873,930,SECONDS_PER_DAY};
     int minute = minutes[0];
     int minute_index = 0;
 
-    Vertex spiral[SECONDS_PER_DAY];
+    Point spiral[SECONDS_PER_DAY];
     float thickness = 0.75/HOURS_PER_DAY;
 
     for(int s = 0; s < SECONDS_PER_DAY; s++){
-        float theta = ((float) s) * ( TWO_PI / SECONDS_PER_HOUR );
-        float radius = ((float) s) / ((float) SECONDS_PER_DAY);
+        float theta = HALF_PI - float(s) * TWO_PI / float(SECONDS_PER_HOUR);
+        float radius = float(s) / float(SECONDS_PER_DAY);
         if(s % 2) radius += thickness;
 
         if (s > minute*60){
@@ -108,44 +114,29 @@ bool RendererES3::init() {
             minute = minutes[minute_index];
         }
 
-        GLubyte r, g, b;
-        if (minute_index % 2) {
-            r = 0xFF; g = 0x00; b = 0x00;
-        } else {
-            r = 0x00; g = 0xFF; b = 0xFF;
-        }
-
-        Vertex v = {
-                {radius * sin(theta), radius * cos(theta)},
-                {r, g, b},
-        };
-        spiral[s] = v;
+        Point p = { radius, theta, float(minute_index) };
+        spiral[s] = p;
     }
 
     glGenBuffers(VB_COUNT, mVB);
     glBindBuffer(GL_ARRAY_BUFFER, mVB[VB_INSTANCE]);
     glBufferData(GL_ARRAY_BUFFER, sizeof(spiral), &spiral[0], GL_STATIC_DRAW);
-    glBindBuffer(GL_ARRAY_BUFFER, mVB[VB_SCALEROT]);
-    glBufferData(GL_ARRAY_BUFFER, MAX_INSTANCES * 4*sizeof(float), NULL, GL_DYNAMIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, mVB[VB_OFFSET]);
-    glBufferData(GL_ARRAY_BUFFER, MAX_INSTANCES * 2*sizeof(float), NULL, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(float), NULL, GL_STATIC_DRAW);
 
     glGenVertexArrays(1, &mVBState);
     glBindVertexArray(mVBState);
 
     glBindBuffer(GL_ARRAY_BUFFER, mVB[VB_INSTANCE]);
-    glVertexAttribPointer(POS_ATTRIB, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)offsetof(Vertex, pos));
-    glVertexAttribPointer(COLOR_ATTRIB, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(Vertex), (const GLvoid*)offsetof(Vertex, rgba));
-    glEnableVertexAttribArray(POS_ATTRIB);
-    glEnableVertexAttribArray(COLOR_ATTRIB);
-
-    glBindBuffer(GL_ARRAY_BUFFER, mVB[VB_SCALEROT]);
-    glVertexAttribPointer(SCALEROT_ATTRIB, 4, GL_FLOAT, GL_FALSE, 4*sizeof(float), 0);
-    glEnableVertexAttribArray(SCALEROT_ATTRIB);
-    glVertexAttribDivisor(SCALEROT_ATTRIB, 1);
+    glVertexAttribPointer(RADIUS_ATTRIB, 1, GL_FLOAT, GL_FALSE, sizeof(Point), (const GLvoid*)offsetof(Point, radius));
+    glVertexAttribPointer(ANGLE_ATTRIB, 1, GL_FLOAT, GL_FALSE, sizeof(Point), (const GLvoid*)offsetof(Point, angle));
+    glVertexAttribPointer(INDEX_ATTRIB, 1, GL_FLOAT, GL_FALSE, sizeof(Point), (const GLvoid*)offsetof(Point, index));
+    glEnableVertexAttribArray(RADIUS_ATTRIB);
+    glEnableVertexAttribArray(ANGLE_ATTRIB);
+    glEnableVertexAttribArray(INDEX_ATTRIB);
 
     glBindBuffer(GL_ARRAY_BUFFER, mVB[VB_OFFSET]);
-    glVertexAttribPointer(OFFSET_ATTRIB, 2, GL_FLOAT, GL_FALSE, 2*sizeof(float), 0);
+    glVertexAttribPointer(OFFSET_ATTRIB, 1, GL_FLOAT, GL_FALSE, sizeof(float), 0);
     glEnableVertexAttribArray(OFFSET_ATTRIB);
     glVertexAttribDivisor(OFFSET_ATTRIB, 1);
 
@@ -170,7 +161,7 @@ RendererES3::~RendererES3() {
 float* RendererES3::mapOffsetBuf() {
     glBindBuffer(GL_ARRAY_BUFFER, mVB[VB_OFFSET]);
     return (float*)glMapBufferRange(GL_ARRAY_BUFFER,
-            0, MAX_INSTANCES * 2*sizeof(float),
+            0, sizeof(float),
             GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT);
 }
 
@@ -181,7 +172,7 @@ void RendererES3::unmapOffsetBuf() {
 float* RendererES3::mapTransformBuf() {
     glBindBuffer(GL_ARRAY_BUFFER, mVB[VB_SCALEROT]);
     return (float*)glMapBufferRange(GL_ARRAY_BUFFER,
-            0, MAX_INSTANCES * 4*sizeof(float),
+            0, 4*sizeof(float),
             GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT);
 }
 
@@ -192,5 +183,5 @@ void RendererES3::unmapTransformBuf() {
 void RendererES3::draw(unsigned int numInstances) {
     glUseProgram(mProgram);
     glBindVertexArray(mVBState);
-    glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, SECONDS_PER_DAY, numInstances);
+    glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, SECONDS_PER_DAY, 1);
 }

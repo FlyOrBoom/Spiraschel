@@ -163,7 +163,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/xing/docs/ndk-samples/gles3jni/app/.cxx/cmake/debug/armeabi-v7a"
+			"value" : "/home/xing/docs/spirosch/app/.cxx/cmake/debug/armeabi-v7a"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -655,7 +655,7 @@
 				}
 			],
 			"type" : "UNINITIALIZED",
-			"value" : "/home/xing/docs/ndk-samples/gles3jni/app/.cxx/cmake/debug/prefab/armeabi-v7a/prefab"
+			"value" : "/home/xing/docs/spirosch/app/.cxx/cmake/debug/prefab/armeabi-v7a/prefab"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -715,7 +715,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/xing/docs/ndk-samples/gles3jni/app/src/main/cpp"
+			"value" : "/home/xing/docs/spirosch/app/src/main/cpp"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -751,7 +751,7 @@
 				}
 			],
 			"type" : "UNINITIALIZED",
-			"value" : "/home/xing/docs/ndk-samples/gles3jni/app/build/intermediates/cmake/debug/obj/armeabi-v7a"
+			"value" : "/home/xing/docs/spirosch/app/build/intermediates/cmake/debug/obj/armeabi-v7a"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -1023,7 +1023,7 @@
 				}
 			],
 			"type" : "UNINITIALIZED",
-			"value" : "/home/xing/docs/ndk-samples/gles3jni/app/build/intermediates/cmake/debug/obj/armeabi-v7a"
+			"value" : "/home/xing/docs/spirosch/app/build/intermediates/cmake/debug/obj/armeabi-v7a"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1307,7 +1307,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/xing/docs/ndk-samples/gles3jni/app/.cxx/cmake/debug/armeabi-v7a"
+			"value" : "/home/xing/docs/spirosch/app/.cxx/cmake/debug/armeabi-v7a"
 		},
 		{
 			"name" : "Project_SOURCE_DIR",
@@ -1319,7 +1319,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/xing/docs/ndk-samples/gles3jni/app/src/main/cpp"
+			"value" : "/home/xing/docs/spirosch/app/src/main/cpp"
 		},
 		{
 			"name" : "gles3jni_LIB_DEPENDS",

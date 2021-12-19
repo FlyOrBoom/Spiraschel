@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gles3jni.iml" filepath="$PROJECT_DIR$/.idea/modules/gles3jni.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/gles3jni.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/gles3jni.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spirosch.iml" filepath="$PROJECT_DIR$/.idea/modules/spirosch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/spirosch.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/spirosch.app.iml" />
     </modules>
   </component>
 </project>

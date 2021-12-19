@@ -134,9 +134,7 @@ void RendererES2::draw(unsigned int numInstances) {
     glEnableVertexAttribArray(mPosAttrib);
     glEnableVertexAttribArray(mColorAttrib);
 
-    for (unsigned int i = 0; i < numInstances; i++) {
-        glUniformMatrix2fv(mScaleRotUniform, 1, GL_FALSE, mScaleRot + 4*i);
-        glUniform2fv(mOffsetUniform, 1, mOffsets + 2*i);
-        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-    }
+    glUniformMatrix2fv(mScaleRotUniform, 1, GL_FALSE, mScaleRot + 4);
+    glUniform2fv(mOffsetUniform, 1, mOffsets + 2);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }

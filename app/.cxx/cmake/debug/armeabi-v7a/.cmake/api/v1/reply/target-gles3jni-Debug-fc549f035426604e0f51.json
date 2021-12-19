@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "/home/xing/docs/ndk-samples/gles3jni/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libgles3jni.so"
+			"path" : "/home/xing/docs/spirosch/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libgles3jni.so"
 		}
 	],
 	"backtrace" : 1,

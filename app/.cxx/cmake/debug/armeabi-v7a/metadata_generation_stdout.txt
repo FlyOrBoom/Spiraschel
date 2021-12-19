@@ -10,4 +10,4 @@
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/xing/docs/ndk-samples/gles3jni/app/.cxx/cmake/debug/armeabi-v7a
+-- Build files have been written to: /home/xing/docs/spirosch/app/.cxx/cmake/debug/armeabi-v7a
