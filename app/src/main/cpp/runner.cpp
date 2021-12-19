@@ -127,7 +127,8 @@ void Renderer::step() {
     timespec now;
     long day_sec = 1639898789;
     clock_gettime(CLOCK_MONOTONIC, &now);
-    mOffset = now.tv_sec - 40000;
+//    ALOGE("time: %d", now);
+    mOffset = 17*30*60;// + 60*(now.tv_sec-78930);
 }
 
 void Renderer::render() {
