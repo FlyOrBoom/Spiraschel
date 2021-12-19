@@ -1,0 +1,7 @@
+Executable : /home/xing/Android/Sdk/cmake/3.18.1/bin/ninja
+arguments : 
+-C
+/home/xing/docs/ndk-samples/gles3jni/app/.cxx/cmake/debug/armeabi-v7a
+gles3jni
+jvmArgs : 
+

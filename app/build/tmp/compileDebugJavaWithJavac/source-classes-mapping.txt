@@ -1,0 +1,10 @@
+com/android/gles3jni/GLES3JNILib.java
+ com.android.gles3jni.GLES3JNILib
+com/android/gles3jni/GLES3JNIView.java
+ com.android.gles3jni.GLES3JNIView
+ com.android.gles3jni.GLES3JNIView$1
+ com.android.gles3jni.GLES3JNIView$Renderer
+com/android/gles3jni/GLES3JNIActivity.java
+ com.android.gles3jni.GLES3JNIActivity
+com/android/gles3jni/BuildConfig.java
+ com.android.gles3jni.BuildConfig

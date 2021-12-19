@@ -1,0 +1,4 @@
+#Sat Dec 18 22:42:30 PST 2021
+base.0=/home/xing/docs/ndk-samples/gles3jni/app/build/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

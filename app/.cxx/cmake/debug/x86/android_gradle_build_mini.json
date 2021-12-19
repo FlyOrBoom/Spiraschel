@@ -1,0 +1,27 @@
+{
+  "buildFiles": [
+    "/home/xing/docs/ndk-samples/gles3jni/app/src/main/cpp/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/home/xing/Android/Sdk/cmake/3.18.1/bin/ninja",
+      "-C",
+      "/home/xing/docs/ndk-samples/gles3jni/app/.cxx/cmake/debug/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/home/xing/Android/Sdk/cmake/3.18.1/bin/ninja",
+    "-C",
+    "/home/xing/docs/ndk-samples/gles3jni/app/.cxx/cmake/debug/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "gles3jni::@6890427a1f51a3e7e1df": {
+      "artifactName": "gles3jni",
+      "abi": "x86",
+      "output": "/home/xing/docs/ndk-samples/gles3jni/app/build/intermediates/cmake/debug/obj/x86/libgles3jni.so",
+      "runtimeFiles": []
+    }
+  }
+}

@@ -1,0 +1,1 @@
+/home/xing/docs/ndk-samples/gles3jni/app/build/intermediates/cmake/debug/obj/armeabi-v7a
