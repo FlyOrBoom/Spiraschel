@@ -1,0 +1,9 @@
+ninja: Entering directory `/home/xing/docs/spirosch/app/.cxx/cmake/debug/arm64-v8a'
+[1/4] Building CXX object CMakeFiles/gles3jni.dir/RendererES2.cpp.o
+[2/4] Building CXX object CMakeFiles/gles3jni.dir/RendererES3.cpp.o
+[3/4] Building CXX object CMakeFiles/gles3jni.dir/gles3jni.cpp.o
+/home/xing/docs/spirosch/app/src/main/cpp/gles3jni.cpp:139:10: warning: unused variable 'day_sec' [-Wunused-variable]
+    long day_sec = 1639898789;
+         ^
+1 warning generated.
+[4/4] Linking CXX shared library /home/xing/docs/spirosch/app/build/intermediates/cmake/debug/obj/arm64-v8a/libgles3jni.so

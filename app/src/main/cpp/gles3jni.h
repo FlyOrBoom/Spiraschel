@@ -80,9 +80,9 @@ struct Vertex {
     GLubyte rgba[4];
 };
 struct Point {
-    GLfloat radius;
-    GLfloat angle;
-    GLfloat index;
+    GLint time;
+    GLint index;
+    GLint start;
 };
 extern const Vertex QUAD[4];
 

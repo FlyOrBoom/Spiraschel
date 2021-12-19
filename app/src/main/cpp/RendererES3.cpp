@@ -20,28 +20,35 @@
 #define STR(s) #s
 #define STRV(s) STR(s)
 
-#define RADIUS_ATTRIB 0
-#define ANGLE_ATTRIB 1
-#define INDEX_ATTRIB 2
+#define TIME_ATTRIB 0
+#define INDEX_ATTRIB 1
+#define START_ATTRIB 2
 #define OFFSET_ATTRIB 3
 
 #define MULTILINE(...) #__VA_ARGS__
 
 static const char* VERTEX_SHADER =
     "#version 300 es\n"
-    "layout(location = " STRV(RADIUS_ATTRIB) ") in float radius;\n"
-    "layout(location = " STRV(ANGLE_ATTRIB) ") in float angle;\n"
-    "layout(location = " STRV(INDEX_ATTRIB) ") in float index;\n"
+    "layout(location = " STRV(TIME_ATTRIB) ") in int t;\n"
+    "layout(location = " STRV(INDEX_ATTRIB) ") in int i;\n"
+    "layout(location = " STRV(START_ATTRIB) ") in int s;\n"
     "out vec4 vColor;\n"
     "void main() {\n"
+    "    float time = float(t);\n"
+    "    float index = float(i);\n"
+    "    float start = float(s);\n"
+    "    float early_index = floor(index*0.5);\n"
+"        float angle = time * 0.0017453292519943;\n"
+"        float radius = time * 0.000017 + ( mod(time, 2.0) - 0.5 ) * ( mod(index, 2.0) * (1. + (start - time) * 0.02) * 0.0004 + 0.02 );\n"
     "    gl_Position = vec4(\n"
-    "        radius * cos(angle),\n"
     "        radius * sin(angle),\n"
+    "        radius * cos(angle),\n"
     "        0.0, 1.0\n"
     "    );\n"
-    "    vec3 blank = vec3(0.8);\n"
-    "    vec3 color = vec3( sin(.1*angle + .4*index), sin(.2*angle + .3*index), sin(.3*angle + .2*index));\n"
-    "    vColor = vec4( mix(blank, color, mod(index, 2.0)), 1.);\n"
+    "    float value = early_index;\n"
+    "    vec3 color = vec3( cos(value), cos(value+1.), cos(value+2.));\n"
+    "    vec3 blank = mix(vec3(1), color*color, 0.2);\n"
+    "    vColor = vec4( mix(blank, color*color, mod(index, 2.0)), 1.);\n"
     "}\n";
 
 static const char FRAGMENT_SHADER[] =
@@ -97,25 +104,21 @@ bool RendererES3::init() {
     if (!mProgram)
         return false;
 
-    int minutes[]{510,567,574,631,638,695,702,761,809,866,873,930,SECONDS_PER_DAY};
-    int minute = minutes[0];
-    int minute_index = 0;
+    int bounds[]{510,567,574,631,638,695,702,761,809,866,873,930,MINUTES_PER_DAY};
+    int start = bounds[0];
+    int start_index = 0;
 
     Point spiral[SECONDS_PER_DAY];
-    float thickness = 0.75/HOURS_PER_DAY;
 
-    for(int s = 0; s < SECONDS_PER_DAY; s++){
-        float theta = HALF_PI - float(s) * TWO_PI / float(SECONDS_PER_HOUR);
-        float radius = float(s) / float(SECONDS_PER_DAY);
-        if(s % 2) radius += thickness;
+    for(int time = 0; time < SECONDS_PER_DAY; time++){
 
-        if (s > minute*60){
-            minute_index++;
-            minute = minutes[minute_index];
+        if (time > start*60){
+            start_index++;
+            start = bounds[start_index];
         }
 
-        Point p = { radius, theta, float(minute_index) };
-        spiral[s] = p;
+        Point p = { time, start_index, start*60 };
+        spiral[time] = p;
     }
 
     glGenBuffers(VB_COUNT, mVB);
@@ -128,12 +131,12 @@ bool RendererES3::init() {
     glBindVertexArray(mVBState);
 
     glBindBuffer(GL_ARRAY_BUFFER, mVB[VB_INSTANCE]);
-    glVertexAttribPointer(RADIUS_ATTRIB, 1, GL_FLOAT, GL_FALSE, sizeof(Point), (const GLvoid*)offsetof(Point, radius));
-    glVertexAttribPointer(ANGLE_ATTRIB, 1, GL_FLOAT, GL_FALSE, sizeof(Point), (const GLvoid*)offsetof(Point, angle));
-    glVertexAttribPointer(INDEX_ATTRIB, 1, GL_FLOAT, GL_FALSE, sizeof(Point), (const GLvoid*)offsetof(Point, index));
-    glEnableVertexAttribArray(RADIUS_ATTRIB);
-    glEnableVertexAttribArray(ANGLE_ATTRIB);
+    glVertexAttribIPointer(TIME_ATTRIB, 1, GL_INT, sizeof(Point), (const GLvoid*)offsetof(Point, time));
+    glVertexAttribIPointer(INDEX_ATTRIB, 1, GL_INT, sizeof(Point), (const GLvoid*)offsetof(Point, index));
+    glVertexAttribIPointer(START_ATTRIB, 1, GL_INT, sizeof(Point), (const GLvoid*)offsetof(Point, start));
+    glEnableVertexAttribArray(TIME_ATTRIB);
     glEnableVertexAttribArray(INDEX_ATTRIB);
+    glEnableVertexAttribArray(START_ATTRIB);
 
     glBindBuffer(GL_ARRAY_BUFFER, mVB[VB_OFFSET]);
     glVertexAttribPointer(OFFSET_ATTRIB, 1, GL_FLOAT, GL_FALSE, sizeof(float), 0);

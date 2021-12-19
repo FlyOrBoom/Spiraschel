@@ -1,0 +1,1 @@
+/home/xing/docs/spirosch/app/src/main/cpp/CMakeLists.txt
