@@ -24,3 +24,7 @@
 7	795	1639953838	CMakeFiles/gles3jni.dir/renderer.cpp.o	5499616d90d356c7
 6	801	1639953838	CMakeFiles/gles3jni.dir/runner.cpp.o	e0368e149ec234a5
 801	986	1639953838	/home/xing/docs/spirosch/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libgles3jni.so	8e055f5249166ac7
+3	560	1639963653	CMakeFiles/gles3jni.dir/runner.cpp.o	e0368e149ec234a5
+560	860	1639963653	/home/xing/docs/spirosch/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libgles3jni.so	8e055f5249166ac7
+0	582	1639963778	CMakeFiles/gles3jni.dir/runner.cpp.o	e0368e149ec234a5
+582	851	1639963778	/home/xing/docs/spirosch/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libgles3jni.so	8e055f5249166ac7

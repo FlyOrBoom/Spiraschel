@@ -15,7 +15,7 @@
 15     limitations under the License.
 16-->
 17<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-18    package="com.android.gles3jni" >
+18    package="app.ahs.spirosch" >
 19
 20    <uses-sdk
 21        android:minSdkVersion="18"
@@ -41,8 +41,8 @@
 32        android:testOnly="true" >
 33        <activity
 33-->/home/xing/docs/spirosch/app/src/main/AndroidManifest.xml:25:5-33:16
-34            android:name="com.android.gles3jni.GLES3JNIActivity"
-34-->/home/xing/docs/spirosch/app/src/main/AndroidManifest.xml:25:15-46
+34            android:name="app.ahs.spirosch.SpiralScheduleActivity"
+34-->/home/xing/docs/spirosch/app/src/main/AndroidManifest.xml:25:15-69
 35            android:configChanges="orientation|keyboardHidden"
 35-->/home/xing/docs/spirosch/app/src/main/AndroidManifest.xml:28:15-65
 36            android:launchMode="singleTask"

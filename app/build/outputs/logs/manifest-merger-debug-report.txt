@@ -4,7 +4,7 @@ ADDED from /home/xing/docs/spirosch/app/src/main/AndroidManifest.xml:17:1-35:12
 INJECTED from /home/xing/docs/spirosch/app/src/main/AndroidManifest.xml:17:1-35:12
 INJECTED from /home/xing/docs/spirosch/app/src/main/AndroidManifest.xml:17:1-35:12
 	package
-		ADDED from /home/xing/docs/spirosch/app/src/main/AndroidManifest.xml:18:11-41
+		ADDED from /home/xing/docs/spirosch/app/src/main/AndroidManifest.xml:18:11-37
 		INJECTED from /home/xing/docs/spirosch/app/src/main/AndroidManifest.xml
 		INJECTED from /home/xing/docs/spirosch/app/src/main/AndroidManifest.xml
 	xmlns:android
@@ -23,7 +23,7 @@ ADDED from /home/xing/docs/spirosch/app/src/main/AndroidManifest.xml:20:3-34:17
 		ADDED from /home/xing/docs/spirosch/app/src/main/AndroidManifest.xml:23:7-41
 	android:allowBackup
 		ADDED from /home/xing/docs/spirosch/app/src/main/AndroidManifest.xml:21:7-34
-activity#com.android.gles3jni.GLES3JNIActivity
+activity#app.ahs.spirosch.SpiralScheduleActivity
 ADDED from /home/xing/docs/spirosch/app/src/main/AndroidManifest.xml:25:5-33:16
 	android:launchMode
 		ADDED from /home/xing/docs/spirosch/app/src/main/AndroidManifest.xml:27:15-46
@@ -32,7 +32,7 @@ ADDED from /home/xing/docs/spirosch/app/src/main/AndroidManifest.xml:25:5-33:16
 	android:theme
 		ADDED from /home/xing/docs/spirosch/app/src/main/AndroidManifest.xml:26:15-73
 	android:name
-		ADDED from /home/xing/docs/spirosch/app/src/main/AndroidManifest.xml:25:15-46
+		ADDED from /home/xing/docs/spirosch/app/src/main/AndroidManifest.xml:25:15-69
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from /home/xing/docs/spirosch/app/src/main/AndroidManifest.xml:29:7-32:23
 action#android.intent.action.MAIN

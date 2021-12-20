@@ -1,10 +1,10 @@
-com/android/gles3jni/GLES3JNILib.java
- com.android.gles3jni.GLES3JNILib
-com/android/gles3jni/GLES3JNIView.java
- com.android.gles3jni.GLES3JNIView
- com.android.gles3jni.GLES3JNIView$1
- com.android.gles3jni.GLES3JNIView$Renderer
-com/android/gles3jni/GLES3JNIActivity.java
- com.android.gles3jni.GLES3JNIActivity
-com/android/gles3jni/BuildConfig.java
- com.android.gles3jni.BuildConfig
+app/ahs/spirosch/BuildConfig.java
+ app.ahs.spirosch.BuildConfig
+app/ahs/spirosch/SpiralScheduleLinker.java
+ app.ahs.spirosch.SpiralScheduleLinker
+app/ahs/spirosch/SpiralScheduleView.java
+ app.ahs.spirosch.SpiralScheduleView
+ app.ahs.spirosch.SpiralScheduleView$1
+ app.ahs.spirosch.SpiralScheduleView$Renderer
+app/ahs/spirosch/SpiralScheduleActivity.java
+ app.ahs.spirosch.SpiralScheduleActivity

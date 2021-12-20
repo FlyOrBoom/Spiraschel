@@ -66,16 +66,16 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 
 build cmake_object_order_depends_target_gles3jni: phony || CMakeFiles/gles3jni.dir
 
-build CMakeFiles/gles3jni.dir/gles3jni.cpp.o: CXX_COMPILER__gles3jni_Debug /home/xing/docs/spirosch/app/src/main/cpp/gles3jni.cpp || cmake_object_order_depends_target_gles3jni
+build CMakeFiles/gles3jni.dir/runner.cpp.o: CXX_COMPILER__gles3jni_Debug /home/xing/docs/spirosch/app/src/main/cpp/runner.cpp || cmake_object_order_depends_target_gles3jni
   DEFINES = -Dgles3jni_EXPORTS
-  DEP_FILE = CMakeFiles/gles3jni.dir/gles3jni.cpp.o.d
+  DEP_FILE = CMakeFiles/gles3jni.dir/runner.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -std=c++11 -fno-rtti -fno-exceptions -Wall -O0 -fno-limit-debug-info  -fPIC
   OBJECT_DIR = CMakeFiles/gles3jni.dir
   OBJECT_FILE_DIR = CMakeFiles/gles3jni.dir
 
-build CMakeFiles/gles3jni.dir/RendererES3.cpp.o: CXX_COMPILER__gles3jni_Debug /home/xing/docs/spirosch/app/src/main/cpp/RendererES3.cpp || cmake_object_order_depends_target_gles3jni
+build CMakeFiles/gles3jni.dir/renderer.cpp.o: CXX_COMPILER__gles3jni_Debug /home/xing/docs/spirosch/app/src/main/cpp/renderer.cpp || cmake_object_order_depends_target_gles3jni
   DEFINES = -Dgles3jni_EXPORTS
-  DEP_FILE = CMakeFiles/gles3jni.dir/RendererES3.cpp.o.d
+  DEP_FILE = CMakeFiles/gles3jni.dir/renderer.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -std=c++11 -fno-rtti -fno-exceptions -Wall -O0 -fno-limit-debug-info  -fPIC
   OBJECT_DIR = CMakeFiles/gles3jni.dir
   OBJECT_FILE_DIR = CMakeFiles/gles3jni.dir
@@ -88,7 +88,7 @@ build CMakeFiles/gles3jni.dir/RendererES3.cpp.o: CXX_COMPILER__gles3jni_Debug /h
 #############################################
 # Link the shared library /home/xing/docs/spirosch/app/build/intermediates/cmake/debug/obj/x86/libgles3jni.so
 
-build /home/xing/docs/spirosch/app/build/intermediates/cmake/debug/obj/x86/libgles3jni.so: CXX_SHARED_LIBRARY_LINKER__gles3jni_Debug CMakeFiles/gles3jni.dir/gles3jni.cpp.o CMakeFiles/gles3jni.dir/RendererES3.cpp.o
+build /home/xing/docs/spirosch/app/build/intermediates/cmake/debug/obj/x86/libgles3jni.so: CXX_SHARED_LIBRARY_LINKER__gles3jni_Debug CMakeFiles/gles3jni.dir/runner.cpp.o CMakeFiles/gles3jni.dir/renderer.cpp.o
   LANGUAGE_COMPILE_FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -std=c++11 -fno-rtti -fno-exceptions -Wall -O0 -fno-limit-debug-info
   LINK_FLAGS = -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libgcc_real.a -Wl,--exclude-libs,libatomic.a -static-libstdc++ -Wl,--build-id=sha1 -Wl,--no-rosegment -Wl,--fatal-warnings -Wl,--no-undefined -Qunused-arguments
   LINK_LIBRARIES = -lGLESv3  -landroid  -lEGL  -llog  -lm  -latomic -lm

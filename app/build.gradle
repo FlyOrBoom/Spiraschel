@@ -9,7 +9,7 @@ android {
     ndkVersion '22.1.7171670'
 
     defaultConfig {
-        applicationId 'com.android.gles3jni'
+        applicationId 'app.ahs.spirosch'
         minSdkVersion "${platformVersion}"
         targetSdkVersion 30
         externalNativeBuild {
