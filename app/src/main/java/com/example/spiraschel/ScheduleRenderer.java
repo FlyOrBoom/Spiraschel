@@ -39,7 +39,7 @@ public class ScheduleRenderer implements GLSurfaceView.Renderer {
         double millisecond = cal.get(Calendar.MILLISECOND);
 
         double autoOffset = 3600*hour + 60*minute + second + 0.001*millisecond;
-        double offset = autoOffset + 10*userOffset;
+        double offset = autoOffset + 30*userOffset;
 
         Log.d("time: ",String.valueOf(offset));
         spiral.draw((float) offset);

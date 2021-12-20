@@ -30,6 +30,12 @@ public class Spiral {
             "float right_cap(float x, float a){" +
             "   return cap(max(x,a), a);" +
             "}" +
+            "float spread(float x, float a){" +
+            "   return exp(-x*x*a*a);" +
+            "}" +
+            "vec3 fade(vec3 c, float a){" +
+            "   return mix(vec3(0.9), c, a);" +
+            "}" +
             "void main() {" +
             "" +
             "  float time = vertex.x;" +
@@ -49,7 +55,7 @@ public class Spiral {
             "  thickness *= mix(0.5, 1.0, progress);" +
             "  thickness *= left_cap(taper*elapsed, 1.2);" +
             "  thickness *= right_cap(taper*elapsed, taper*total - 1.2);" +
-            "  thickness *= mix(0.5, 1.0, exp(-proximity*proximity*taper*taper*taper*taper));" +
+            "  thickness *= mix(0.5, 1.0, spread(proximity,0.001));" +
             "  float flipflop = mod(time, 2.0) - 0.5;" +
             "  " +
             "  float radius = 0.8 * exp( slope*(offset-time) + thickness*flipflop );" +
@@ -60,7 +66,8 @@ public class Spiral {
             "  vec3 color_end = cos( early_index + vec3(0.5,1.5,2.5) );" +
             "  color = mix(color_start, color_end, progress);" +
             "  color *= color;" +
-            "  color = mix(vec3(0.9), color, mod(index, 2.0));" +
+            "  color = mix(fade(color, 0.1), color, mod(index, 2.0));" +
+            "  color = mix(fade(color, 0.5), color, spread(proximity, 0.01));" +
             "}";
 
     private final String fragmentShaderCode =
