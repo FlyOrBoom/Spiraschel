@@ -18,4 +18,8 @@ class ScheduleSurfaceView extends GLSurfaceView {
         // Set the Renderer for drawing on the GLSurfaceView
         setRenderer(renderer);
     }
+
+    public void setUserOffset(double x, double y){
+        renderer.setUserOffset(x, y);
+    }
 }

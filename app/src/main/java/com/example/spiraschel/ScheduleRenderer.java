@@ -14,6 +14,8 @@ public class ScheduleRenderer implements GLSurfaceView.Renderer {
     private Spiral spiral;
     private Calendar cal;
 
+    double userOffset = 0;
+
     public void onSurfaceCreated(GL10 unused, EGLConfig config) {
         // Set the background frame color
         GLES20.glClearColor(1f, 1f, 1f, 1f);
@@ -31,15 +33,16 @@ public class ScheduleRenderer implements GLSurfaceView.Renderer {
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
 
         cal = Calendar.getInstance();
-        float hour = cal.get(Calendar.HOUR_OF_DAY);
-        float minute = cal.get(Calendar.MINUTE);
-        float second = cal.get(Calendar.SECOND);
+        double hour = cal.get(Calendar.HOUR_OF_DAY);
+        double minute = cal.get(Calendar.MINUTE);
+        double second = cal.get(Calendar.SECOND);
+        double millisecond = cal.get(Calendar.MILLISECOND);
 
-        float offset = 60*(60*hour + minute) + second;
+        double autoOffset = 3600*hour + 60*minute + second + 0.001*millisecond;
+        double offset = autoOffset + 10*userOffset;
 
-        Log.d("time",String.valueOf(offset));
-
-        spiral.draw(offset);
+        Log.d("time: ",String.valueOf(offset));
+        spiral.draw((float) offset);
     }
 
     public void onSurfaceChanged(GL10 unused, int width, int height) {
@@ -58,6 +61,10 @@ public class ScheduleRenderer implements GLSurfaceView.Renderer {
         GLES20.glCompileShader(shader);
 
         return shader;
+    }
+
+    public void setUserOffset(double x, double y){
+        userOffset += y;
     }
 
 }

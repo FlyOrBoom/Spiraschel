@@ -19,7 +19,7 @@ public class Spiral {
 
     private final String vertexShaderCode = "" +
             "attribute vec4 vertex;" +
-            "attribute float offset;" +
+            "uniform float offset;" +
             "varying vec3 color;" +
             "float cap(float x, float a){" +
             "   return sqrt(1.0 - (a-x)*(a-x));" +
@@ -41,13 +41,16 @@ public class Spiral {
             "  float elapsed = time - start;" +
             "  float total = end - start;" +
             "  float progress = elapsed/total;" +
+            "  float nearness = time - offset;" +
             "" +
             "  float slope = 0.00002;" +
             "  float taper = 0.05;" +
-            "  float thickness = 0.06;" +
+            "  float proximity = nearness * 0.003;" +
+            "  float thickness = 0.08;" +
             "  thickness *= mix(0.5, 1.0, progress);" +
-            "  thickness *= left_cap(elapsed*taper, 1.2);" +
-            "  thickness *= right_cap(elapsed*taper, total*taper - 1.2);" +
+            "  thickness *= left_cap(taper*elapsed, 1.2);" +
+            "  thickness *= right_cap(taper*elapsed, taper*total - 1.2);" +
+            "  thickness *= mix(0.5, 1.0, smoothstep(1.0, 0.0, proximity*proximity));" +
             "  float flipflop = mod(time, 2.0) - 0.5;" +
             "  " +
             "  float radius = 0.8 * exp( slope*(offset-time) + thickness*flipflop );" +
