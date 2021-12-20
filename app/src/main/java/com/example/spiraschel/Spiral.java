@@ -49,13 +49,12 @@ public class Spiral {
             "  float progress = elapsed/total;" +
             "  float proximity = time - offset;" +
             "" +
-            "  float slope = 0.00002;" +
-            "  float taper = 0.05;" +
-            "  float thickness = 0.08;" +
-            "  thickness *= mix(0.5, 1.0, progress);" +
+            "  float slope = 0.000025;" +
+            "  float taper = 0.03;" +
+            "  float thickness = mix(0.5, 1.0, spread(proximity,0.0005));" +
+            "  thickness = 0.1 * mix(pow(thickness, 2.0), thickness, progress);" +
             "  thickness *= left_cap(taper*elapsed, 1.2);" +
             "  thickness *= right_cap(taper*elapsed, taper*total - 1.2);" +
-            "  thickness *= mix(0.5, 1.0, spread(proximity,0.001));" +
             "  float flipflop = mod(time, 2.0) - 0.5;" +
             "  " +
             "  float radius = 0.8 * exp( slope*(offset-time) + thickness*flipflop );" +
@@ -68,6 +67,7 @@ public class Spiral {
             "  color *= color;" +
             "  color = mix(fade(color, 0.1), color, mod(index, 2.0));" +
             "  color = mix(fade(color, 0.5), color, spread(proximity, 0.01));" +
+            "  color = mix(vec3(1), color, spread(proximity, 0.00003));" +
             "}";
 
     private final String fragmentShaderCode =
