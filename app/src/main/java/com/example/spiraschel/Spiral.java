@@ -47,7 +47,8 @@ public class Spiral {
             "  float elapsed = time - start;" +
             "  float total = end - start;" +
             "  float progress = elapsed/total;" +
-            "  float proximity = time - offset;" +
+            "  float proximity = offset - time;" +
+            "  float edge = log(max(proximity, 0.00001));" +
             "" +
             "  float slope = 0.000025;" +
             "  float taper = 0.03;" +
@@ -65,8 +66,8 @@ public class Spiral {
             "  vec3 color_end = cos( early_index + vec3(0.5,1.5,2.5) );" +
             "  color = mix(color_start, color_end, progress);" +
             "  color *= color;" +
-            "  color = mix(fade(color, 0.1), color, mod(index, 2.0));" +
-            "  color = mix(fade(color, 0.5), color, spread(proximity, 0.01));" +
+            "  color = mix(fade(color, 0.2), color, mod(index, 2.0));" +
+            "  color = mix(fade(color, 0.4), color, spread(edge*edge, 0.01));" +
             "  color = mix(vec3(1), color, spread(proximity, 0.00003));" +
             "}";
 
