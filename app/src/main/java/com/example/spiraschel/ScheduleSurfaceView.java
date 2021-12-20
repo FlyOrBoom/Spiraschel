@@ -1,7 +1,11 @@
 package com.example.spiraschel;
 
 import android.content.Context;
+import android.opengl.EGLConfig;
 import android.opengl.GLSurfaceView;
+
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 class ScheduleSurfaceView extends GLSurfaceView {
 
@@ -12,6 +16,7 @@ class ScheduleSurfaceView extends GLSurfaceView {
 
         // Create an OpenGL ES 2.0 context
         setEGLContextClientVersion(2);
+        setEGLConfigChooser(new MultisampleConfigChooser());
 
         renderer = new ScheduleRenderer();
 

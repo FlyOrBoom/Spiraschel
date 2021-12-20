@@ -41,16 +41,15 @@ public class Spiral {
             "  float elapsed = time - start;" +
             "  float total = end - start;" +
             "  float progress = elapsed/total;" +
-            "  float nearness = time - offset;" +
+            "  float proximity = time - offset;" +
             "" +
             "  float slope = 0.00002;" +
             "  float taper = 0.05;" +
-            "  float proximity = nearness * 0.003;" +
             "  float thickness = 0.08;" +
             "  thickness *= mix(0.5, 1.0, progress);" +
             "  thickness *= left_cap(taper*elapsed, 1.2);" +
             "  thickness *= right_cap(taper*elapsed, taper*total - 1.2);" +
-            "  thickness *= mix(0.5, 1.0, smoothstep(1.0, 0.0, proximity*proximity));" +
+            "  thickness *= mix(0.5, 1.0, exp(-proximity*proximity*taper*taper*taper*taper));" +
             "  float flipflop = mod(time, 2.0) - 0.5;" +
             "  " +
             "  float radius = 0.8 * exp( slope*(offset-time) + thickness*flipflop );" +
@@ -169,5 +168,4 @@ public class Spiral {
         // Disable vertex array
         GLES20.glDisableVertexAttribArray(vertexHandle);
     }
-
 }
