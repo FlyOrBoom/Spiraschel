@@ -1,1 +1,0 @@
-/home/xing/docs/spirosch/app/build/intermediates/cmake/debug/obj/arm64-v8a

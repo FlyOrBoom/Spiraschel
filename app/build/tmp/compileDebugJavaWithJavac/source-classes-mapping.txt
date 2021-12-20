@@ -1,10 +1,10 @@
-com/android/gles3jni/GLES3JNILib.java
- com.android.gles3jni.GLES3JNILib
-com/android/gles3jni/GLES3JNIView.java
- com.android.gles3jni.GLES3JNIView
- com.android.gles3jni.GLES3JNIView$1
- com.android.gles3jni.GLES3JNIView$Renderer
-com/android/gles3jni/GLES3JNIActivity.java
- com.android.gles3jni.GLES3JNIActivity
-com/android/gles3jni/BuildConfig.java
- com.android.gles3jni.BuildConfig
+com/example/spiraschel/ScheduleActivity.java
+ com.example.spiraschel.ScheduleActivity
+com/example/spiraschel/BuildConfig.java
+ com.example.spiraschel.BuildConfig
+com/example/spiraschel/ScheduleRenderer.java
+ com.example.spiraschel.ScheduleRenderer
+com/example/spiraschel/ScheduleSurfaceView.java
+ com.example.spiraschel.ScheduleSurfaceView
+com/example/spiraschel/Spiral.java
+ com.example.spiraschel.Spiral

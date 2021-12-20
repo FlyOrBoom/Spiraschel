@@ -1,5 +1,0 @@
-# ninja log v5
-0	369	1639914783	CMakeFiles/gles3jni.dir/RendererES2.cpp.o	e4c78ebd99239022
-2	373	1639914783	CMakeFiles/gles3jni.dir/RendererES3.cpp.o	86325f7a61891be1
-0	452	1639914783	CMakeFiles/gles3jni.dir/gles3jni.cpp.o	34b21994370453bb
-452	782	1639914783	/home/xing/docs/spirosch/app/build/intermediates/cmake/debug/obj/arm64-v8a/libgles3jni.so	cc872be92001e0ec
