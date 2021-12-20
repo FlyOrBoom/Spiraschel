@@ -5,6 +5,9 @@ import android.opengl.GLES20;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
+import java.time.LocalTime;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 public class Spiral {
 
@@ -55,7 +58,7 @@ public class Spiral {
             "  vec3 color_end = cos( early_index + vec3(0.5,1.5,2.5) );" +
             "  color = mix(color_start, color_end, progress);" +
             "  color *= color;" +
-            "  color = mix(vec3(1), color, mod(index, 2.0));" +
+            "  color = mix(vec3(0.9), color, mod(index, 2.0));" +
             "}";
 
     private final String fragmentShaderCode =
@@ -72,11 +75,17 @@ public class Spiral {
 
     public Spiral(int[] bounds) {
 
-        int interval_start = 0;
-        int interval_end = bounds[0] * 60;
-        int interval_index = 0;
+        int bounds_start = bounds[0] * 60;
+        int bounds_end = bounds[bounds.length - 1] * 60;
 
-        for(int t = 0; t < SECONDS; t++){
+        int interval_start = bounds[0] * 60;
+        int interval_end = bounds[1] * 60;
+        int interval_index = 1;
+
+        for(int i = 0; i < bounds_start * DIMENSIONS; i++)
+            vertices[i] = 0f;
+
+        for(int t = bounds_start; t < bounds_end; t++){
 
             if (t >= interval_end){
                 interval_start = bounds[interval_index] * 60;
@@ -90,6 +99,10 @@ public class Spiral {
             vertices[i+2] = (float) interval_start;
             vertices[i+3] = (float) interval_end;
         }
+
+        for(int i = bounds_end * DIMENSIONS; i < SECONDS * DIMENSIONS; i++)
+            vertices[i] = 0f;
+
         // initialize vertex byte buffer for shape coordinates
         ByteBuffer bb = ByteBuffer.allocateDirect(
                 // (number of coordinate values * 4 bytes per float)
@@ -126,7 +139,7 @@ public class Spiral {
     private int vertexHandle;
     private int offsetHandle;
 
-    public void draw() {
+    public void draw(float offset) {
         // Add program to OpenGL ES environment
         GLES20.glUseProgram(mProgram);
 
@@ -145,7 +158,7 @@ public class Spiral {
         offsetHandle = GLES20.glGetUniformLocation(mProgram, "offset");
 
         // Set color for drawing the triangle
-        GLES20.glUniform1f(offsetHandle, (float)(10000));
+        GLES20.glUniform1f(offsetHandle, offset);
 
         // Draw the triangle
         GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP, 0, SECONDS);

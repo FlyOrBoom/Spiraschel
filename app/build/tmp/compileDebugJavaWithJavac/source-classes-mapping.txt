@@ -1,9 +1,9 @@
-com/example/spiraschel/ScheduleActivity.java
- com.example.spiraschel.ScheduleActivity
-com/example/spiraschel/BuildConfig.java
- com.example.spiraschel.BuildConfig
 com/example/spiraschel/ScheduleRenderer.java
  com.example.spiraschel.ScheduleRenderer
+com/example/spiraschel/BuildConfig.java
+ com.example.spiraschel.BuildConfig
+com/example/spiraschel/ScheduleActivity.java
+ com.example.spiraschel.ScheduleActivity
 com/example/spiraschel/ScheduleSurfaceView.java
  com.example.spiraschel.ScheduleSurfaceView
 com/example/spiraschel/Spiral.java

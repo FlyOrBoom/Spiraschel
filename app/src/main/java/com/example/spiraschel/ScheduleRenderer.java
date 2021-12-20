@@ -7,16 +7,19 @@ import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.util.Log;
 
+import java.util.Calendar;
+
 public class ScheduleRenderer implements GLSurfaceView.Renderer {
 
-    private Spiral mSpiral;
+    private Spiral spiral;
+    private Calendar cal;
 
     public void onSurfaceCreated(GL10 unused, EGLConfig config) {
         // Set the background frame color
         GLES20.glClearColor(1f, 1f, 1f, 1f);
-        int[] bounds = new int[]{510,567,574,631,638,695,702,761,809,866,873,930,24*60};
+        int[] bounds = new int[]{510,567,574,631,638,695,702,761,809,866,873,930};
 
-        mSpiral = new Spiral(bounds);
+        spiral = new Spiral(bounds);
 
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
 
@@ -26,7 +29,17 @@ public class ScheduleRenderer implements GLSurfaceView.Renderer {
         // Redraw background color
 
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
-        mSpiral.draw();
+
+        cal = Calendar.getInstance();
+        float hour = cal.get(Calendar.HOUR_OF_DAY);
+        float minute = cal.get(Calendar.MINUTE);
+        float second = cal.get(Calendar.SECOND);
+
+        float offset = 60*(60*hour + minute) + second;
+
+        Log.d("time",String.valueOf(offset));
+
+        spiral.draw(offset);
     }
 
     public void onSurfaceChanged(GL10 unused, int width, int height) {

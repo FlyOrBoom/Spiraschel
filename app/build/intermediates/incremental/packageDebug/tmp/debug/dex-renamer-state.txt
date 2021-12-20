@@ -1,4 +1,4 @@
-#Sun Dec 19 22:16:24 PST 2021
-base.0=/home/xing/docs/spiraschel/app/build/intermediates/dex/debug/mergeDexDebug/classes.dex
+#Mon Dec 20 00:23:12 PST 2021
+base.0=/home/xing/docs/spirosch/app/build/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
