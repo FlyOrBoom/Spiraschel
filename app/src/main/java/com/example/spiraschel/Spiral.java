@@ -34,7 +34,7 @@ public class Spiral {
             "   return exp(-x*x*a*a);" +
             "}" +
             "vec3 fade(vec3 c, float a){" +
-            "   return mix(vec3(0.9), c, a);" +
+            "   return mix(vec3(1), c, a);" +
             "}" +
             "void main() {" +
             "" +
@@ -43,7 +43,7 @@ public class Spiral {
             "  float start = vertex.z;" +
             "  float end = vertex.w;" +
             "" +
-            "  float angle = time * 0.0017453292519943;" +
+            "  float angle = time * 0.000872664625997;" +
             "  float elapsed = time - start;" +
             "  float total = end - start;" +
             "  float progress = elapsed/total;" +
@@ -51,14 +51,14 @@ public class Spiral {
             "  float edge = log(max(proximity, 0.00001));" +
             "" +
             "  float slope = 0.000025;" +
-            "  float taper = 0.03;" +
             "  float thickness = mix(0.5, 1.0, spread(proximity,0.0005));" +
-            "  thickness = 0.1 * mix(pow(thickness, 2.0), thickness, progress);" +
+            "  thickness = 0.2 * mix(pow(thickness, 2.0), thickness, progress);" +
+            "  float taper = 0.0015 / thickness;" +
             "  thickness *= left_cap(taper*elapsed, 1.2);" +
             "  thickness *= right_cap(taper*elapsed, taper*total - 1.2);" +
             "  float flipflop = mod(time, 2.0) - 0.5;" +
             "  " +
-            "  float radius = 0.8 * exp( slope*(offset-time) + thickness*flipflop );" +
+            "  float radius = 0.5 * exp( slope*(offset-time) + thickness*flipflop );" +
             "  gl_Position = vec4( radius*sin(angle), radius*cos(angle), 0, 1 );" +
             "" +
             "  float early_index = floor(index * 0.5);" +
@@ -66,9 +66,9 @@ public class Spiral {
             "  vec3 color_end = cos( early_index + vec3(0.5,1.5,2.5) );" +
             "  color = mix(color_start, color_end, progress);" +
             "  color *= color;" +
-            "  color = mix(fade(color, 0.2), color, mod(index, 2.0));" +
-            "  color = mix(fade(color, 0.4), color, spread(edge*edge, 0.01));" +
-            "  color = mix(vec3(1), color, spread(proximity, 0.00003));" +
+            "  color = mix(fade(color, 0.3), color, mod(index, 2.0));" +
+            "  color = mix(fade(color, 0.6), color, spread(edge*edge, 0.01));" +
+            "  color = mix(fade(color, 0.0), color, spread(proximity, 0.00006));" +
             "}";
 
     private final String fragmentShaderCode =
